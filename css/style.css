@@ -6,6 +6,8 @@
     --main-color: #FB954C;
     --dark-blue: #1e1e2f;
     --light-purple:#A784B2;
+
+    --gradient-color: linear-gradient(to right, #cfc2f3, #8e77f0);
 }
 .demo i {
     font-size: 20px;
@@ -15,7 +17,7 @@
   cursor: pointer;
   }
 .demo i:hover{
-    color: var(--main-color);
+    color: var(--seced-color);
    transform: scale(1.3) rotate(5deg);
 }
 img, svg { 
@@ -93,20 +95,7 @@ body {
     padding: 10px 0;
     display: inline-block;
 }
-.nav-item a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    background: #ff6600; /* لون الخط */
-    left: 0;
-    bottom: 0;
-    transition: 0.3s;
-}
 
-.nav-item:hover a::after {
-    width: 100%;
-}
 .dropdown-menu {
     position: absolute;
     top: 40px;
@@ -127,18 +116,47 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    
 }
+.dropdown-toggle::after {
+    color:#BA82D2;
+    
+}
+    
 
-/* Nav links */
 .nav-link {
+  position: relative;
+  display: inline-block;
   font-weight: 500;
   color: #1e1e2f;
+  padding: 10px 0;
 }
 
+/* نمسح أي border في الموبايل */
 .nav-link.active {
-  border-bottom: 3px solid var(--main-color);
+  border-bottom: none !important;
 }
 
+/* underline */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg,#cfc2f3,#8e77f0);
+  transition: width 0.3s ease;
+  border-radius: 20px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link.active::after {
+  width: 100%;
+}
 /* Right Section */
 .nav-right small {
   font-size: 12px;
@@ -156,9 +174,9 @@ body {
     border-bottom: 1px solid #eee;
   }
   
-  .nav-link.active {
+  /* .nav-link.active {
     border-bottom: 3px solid var(--main-color);
-  }
+  } */
   
   .navbar-toggler {
     border: none;
@@ -417,7 +435,6 @@ body {
 
 .welcome-badge {
       background: linear-gradient(to right, #ff9a3c, #8e77f0); 
-  /* background: linear-gradient(to right, #cfc2f3, #8e77f0); */
     color: white;
     padding: 8px 20px;
     border-radius: 50px;
@@ -429,7 +446,6 @@ body {
     margin-top: 150px;
 }
 
-/* النص */
 .hero-content {
   width: 50%;
   z-index: 5;
@@ -470,7 +486,6 @@ body {
     color: white;
 }
 
-/* جزء الصور */
 
 .hero-images-wrapper {
     position: relative;
@@ -500,7 +515,6 @@ body {
     justify-content: center;
 }
 
-/* الشكل الخلفي */
 .shape-bg {
  position: absolute;
     right: -10%; 
@@ -509,20 +523,18 @@ body {
     z-index: 1;
 }
 
-/* صورة الأشخاص */
 .people-img {
     width: 120%;
     max-width: none;
     z-index: 2;
 }
 
-/* العناصر العائمة */
 
  .item {
     position: absolute;
     z-index: 3;
     animation: float 4s ease-in-out infinite;
-    width: 70px; /* حجم الأيقونات */
+    width: 70px; 
 }
 
 .item-target { top: 20%; left: 0; }
@@ -537,7 +549,6 @@ body {
     50% { transform: translateY(-15px); }
 }
 
-/* Mobile Hero Styles */
 @media (max-width: 991px) {
 
     .hero {
@@ -563,7 +574,7 @@ body {
    
 
     .item {
-        width: 45px;      /* تصغير الحجم */
+        width: 45px;    
         animation: float 5s ease-in-out infinite;
     }
 
