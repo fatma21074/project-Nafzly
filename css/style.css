@@ -55,6 +55,7 @@ body {
     padding: 10px 15px;
   }
   
+  
   .navbar-collapse {
     background: #fff;
     padding: 15px;
@@ -73,6 +74,59 @@ body {
     padding-top: 10px;
     border-top: 1px solid #eee;
   }
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    padding: 10px 0;
+    display: inline-block;
+}
+.nav-item a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #ff6600; /* لون الخط */
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+}
+
+.nav-item:hover a::after {
+    width: 100%;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    list-style: none;
+    width: 220px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: 0.3s ease;
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* Nav links */
@@ -680,7 +734,7 @@ body {
         font-size: 14px;
     }
     
-    .feature-cards {
+    /* .feature-cards {
         gap: 20px;
     }
     
@@ -691,7 +745,7 @@ body {
         border-bottom: 1px solid #eee;
         padding-bottom: 30px;
         margin-bottom: 30px;
-    }
+    } */
     
     .feature-card:last-child {
         border-bottom: none;
@@ -723,4 +777,35 @@ body {
     .feature-card img {
         width: 60px;
     }
+}
+/* افتراضياً */
+.mobile-features {
+    display: none;
+}
+
+/* موبايل */
+@media (max-width: 991px) {
+
+    .desktop-features {
+        display: none;
+    }
+
+    .mobile-features {
+        display: block;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .carousel-item {
+        padding: 20px;
+    }
+
+    /* نخفي الخط الفاصل */
+    .feature-card {
+        border: none !important;
+        margin-bottom: 0;
+    }
+}
+.carousel-indicators [data-bs-target] {
+  background-color: #383169;
 }
